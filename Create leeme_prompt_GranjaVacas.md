@@ -1,82 +1,97 @@
-1 — Crear carpeta del proyecto
+Perfecto — te doy **un procedimiento paso a paso (comandos + código listo para pegar)** para completar toda la *Primera parte* de tu proyecto **UIII_Granja_Vacas_0627** en **Python / Django** usando **VS Code**. Sigo el orden que pediste (1 → 31). Copia y pega los fragmentos donde corresponda.
+
+---
+
+# 1 — Crear carpeta del proyecto
 
 En tu ubicación preferida (Explorador / Terminal):
 
+```bash
 mkdir UIII_Granja_Vacas_0627
 cd UIII_Granja_Vacas_0627
+```
 
-2 — Abrir VS Code en esa carpeta
+# 2 — Abrir VS Code en esa carpeta
 
 Desde la terminal:
 
+```bash
 code .
+```
 
+(o desde el explorador: botón derecho → *Open with Code*).
 
-(o desde el explorador: botón derecho → Open with Code).
+# 3 — Abrir terminal en VS Code
 
-3 — Abrir terminal en VS Code
+En VS Code: menú **Ver → Terminal** (o `Ctrl+ñ` / `Ctrl+` ` (Windows)`) — se abrirá integrado en la carpeta actual.
 
-En VS Code: menú Ver → Terminal (o Ctrl+ñ / Ctrl+ (Windows)) — se abrirá integrado en la carpeta actual.
+# 4 — Crear carpeta entorno virtual `.venv` desde la terminal de VS Code
 
-4 — Crear carpeta entorno virtual .venv desde la terminal de VS Code
+**Windows (PowerShell):**
 
-Windows (PowerShell):
-
+```powershell
 python -m venv .venv
+```
 
+**Linux / macOS:**
 
-Linux / macOS:
-
+```bash
 python3 -m venv .venv
+```
 
+Se creará la carpeta `.venv` en la raíz del proyecto.
 
-Se creará la carpeta .venv en la raíz del proyecto.
+# 5 — Activar el entorno virtual
 
-5 — Activar el entorno virtual
+**PowerShell (Windows):**
 
-PowerShell (Windows):
-
+```powershell
 .\.venv\Scripts\Activate.ps1
+```
 
+(Si error por políticas de ejecución, ejecutar `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser` como administrador o usar el comando `.venv\Scripts\activate` en cmd)
 
-(Si error por políticas de ejecución, ejecutar Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser como administrador o usar el comando .venv\Scripts\activate en cmd)
+**cmd (Windows):**
 
-cmd (Windows):
-
+```cmd
 .\.venv\Scripts\activate
+```
 
+**Linux / macOS:**
 
-Linux / macOS:
-
+```bash
 source .venv/bin/activate
+```
 
+Al activarse verás `(.venv)` al inicio de la línea.
 
-Al activarse verás (.venv) al inicio de la línea.
+# 6 — Activar intérprete de Python en VS Code
 
-6 — Activar intérprete de Python en VS Code
+En VS Code: `Ctrl+Shift+P` → *Python: Select Interpreter* → selecciona la ruta `.../UIII_Granja_Vacas_0627/.venv/...` (el intérprete del entorno).
 
-En VS Code: Ctrl+Shift+P → Python: Select Interpreter → selecciona la ruta .../UIII_Granja_Vacas_0627/.venv/... (el intérprete del entorno).
-
-7 — Instalar Django
+# 7 — Instalar Django
 
 Con el entorno activo:
 
+```bash
 pip install django
+```
 
+(Puedes fijar versión: `pip install "django>=4.2,<5"` si quieres).
 
-(Puedes fijar versión: pip install "django>=4.2,<5" si quieres).
+# 8 — Crear proyecto `backend_Granja_Vacas` sin duplicar carpeta
 
-8 — Crear proyecto backend_Granja_Vacas sin duplicar carpeta
+Para **evitar crear una carpeta adicional** dentro de `UIII_Granja_Vacas_0627`, ejecuta desde la raíz:
 
-Para evitar crear una carpeta adicional dentro de UIII_Granja_Vacas_0627, ejecuta desde la raíz:
-
+```bash
 django-admin startproject backend_Granja_Vacas .
+```
 
-
-Nota: el . al final crea el proyecto en la carpeta actual (no crea backend_Granja_Vacas/backend_Granja_Vacas duplicado).
+> Nota: el `.` al final crea el proyecto en la carpeta actual (no crea `backend_Granja_Vacas/backend_Granja_Vacas` duplicado).
 
 Estructura resultante inicial:
 
+```
 UIII_Granja_Vacas_0627/
 ├─ backend_Granja_Vacas/
 │  ├─ __init__.py
@@ -85,33 +100,41 @@ UIII_Granja_Vacas_0627/
 │  └─ wsgi.py
 ├─ manage.py
 └─ .venv/
+```
 
-9 — Ejecutar servidor en el puerto 8023
+# 9 — Ejecutar servidor en el puerto **8023**
+
+```bash
 python manage.py runserver 8023
+```
 
+(o `python3 manage.py runserver 0.0.0.0:8023` si quieres aceptar conexiones externas).
 
-(o python3 manage.py runserver 0.0.0.0:8023 si quieres aceptar conexiones externas).
-
-10 — Copiar y pegar el link en el navegador
+# 10 — Copiar y pegar el link en el navegador
 
 Abre en el navegador:
 
+```
 http://127.0.0.1:8023/
-
+```
 
 ó
 
+```
 http://localhost:8023/
+```
 
-11 — Crear la aplicación app_Granja_Vacas
+# 11 — Crear la aplicación `app_Granja_Vacas`
 
 Con el entorno activo y en la raíz del proyecto:
 
+```bash
 python manage.py startapp app_Granja_Vacas
-
+```
 
 Estructura:
 
+```
 app_Granja_Vacas/
  ├─ migrations/
  ├─ admin.py
@@ -120,33 +143,35 @@ app_Granja_Vacas/
  ├─ views.py
  ├─ urls.py   <-- (lo crearás)
  └─ templates/ (lo crearás)
+```
 
-12 — Pegar/usar el models.py que compartiste
+# 12 — Pegar/usar el `models.py` que compartiste
 
-Copia tu contenido (el que enviaste) a app_Granja_Vacas/models.py. (No hace falta modificarlo ahora.)
+Copia tu contenido (el que enviaste) a `app_Granja_Vacas/models.py`. (No hace falta modificarlo ahora.)
 
-Recuadro: tu models.py (ya lo diste). Asegúrate de que app_Granja_Vacas está presente en INSTALLED_APPS antes de migrar.
+> Recuadro: tu `models.py` (ya lo diste). Asegúrate de que `app_Granja_Vacas` está presente en INSTALLED_APPS antes de migrar.
 
-12.5 — Procedimiento para realizar migraciones (makemigrations y migrate)
+# 12.5 — Procedimiento para realizar migraciones (`makemigrations` y `migrate`)
 
-Asegúrate de que en backend_Granja_Vacas/settings.py esté añadida la app (ver punto 25).
+1. Asegúrate de que en `backend_Granja_Vacas/settings.py` esté añadida la app (ver punto 25).
+2. Ejecuta:
 
-Ejecuta:
-
+```bash
 python manage.py makemigrations
 python manage.py migrate
-
+```
 
 Esto crea las tablas en la DB sqlite por defecto.
 
-13 — Primero trabajamos con el MODELO: Vaca
+# 13 — Primero trabajamos con el MODELO: **Vaca**
 
-Nos concentraremos en CRUD de Vaca. Producción y EventoSanitario quedan pendientes (como pediste).
+Nos concentraremos en CRUD de `Vaca`. Producción y EventoSanitario quedan pendientes (como pediste).
 
-14 — views.py de app_Granja_Vacas: funciones y código
+# 14 — `views.py` de `app_Granja_Vacas`: funciones y código
 
-Sustituye / añade en app_Granja_Vacas/views.py el siguiente código (funciones: inicio_Granja_Vacas, agregar_vaca, actualizar_vaca, realizar_actualizacion_vaca, borrar_vaca):
+Sustituye / añade en `app_Granja_Vacas/views.py` el siguiente código (funciones: `inicio_Granja_Vacas`, `agregar_vaca`, `actualizar_vaca`, `realizar_actualizacion_vaca`, `borrar_vaca`):
 
+```python
 # app_Granja_Vacas/views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Vaca
@@ -201,11 +226,13 @@ def borrar_vaca(request, pk):
         vaca.delete()
         return redirect('ver_vacas')
     return render(request, 'Vacas/borrar_vaca.html', {'vaca': vaca})
+```
 
-15 — Crear carpeta templates dentro de app_Granja_Vacas
+# 15 — Crear carpeta `templates` dentro de `app_Granja_Vacas`
 
 Estructura:
 
+```
 app_Granja_Vacas/
  └─ templates/
     ├─ base.html
@@ -218,11 +245,13 @@ app_Granja_Vacas/
        ├─ ver_vacas.html
        ├─ actualizar_vaca.html
        └─ borrar_vaca.html
+```
 
-16 & 17 — base.html (con Bootstrap) y archivos parciales
+# 16 & 17 — `base.html` (con Bootstrap) y archivos parciales
 
-Crea app_Granja_Vacas/templates/base.html:
+Crea `app_Granja_Vacas/templates/base.html`:
 
+```html
 <!doctype html>
 <html lang="es">
 <head>
@@ -254,10 +283,11 @@ Crea app_Granja_Vacas/templates/base.html:
   {% block extra_js %}{% endblock %}
 </body>
 </html>
+```
 
+`navbar.html` (coloca en `templates/navbar.html`). Incluye iconos con emojis (solución simple y compatible):
 
-navbar.html (coloca en templates/navbar.html). Incluye iconos con emojis (solución simple y compatible):
-
+```html
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
   <div class="container">
     <a class="navbar-brand" href="{% url 'inicio' %}">🐄 Sistema de Administración Granja_Vacas</a>
@@ -301,35 +331,36 @@ navbar.html (coloca en templates/navbar.html). Incluye iconos con emojis (soluci
     </div>
   </div>
 </nav>
+```
 
+`footer.html` (en `templates/footer.html`):
 
-footer.html (en templates/footer.html):
-
+```html
 <footer class="footer-fixed bg-white text-center py-2 border-top">
   <div class="container">
     <small>© {{ now|date:"Y" }} - Creado por Maximiliano Lira, Cbtis 128. Todos los derechos reservados.</small>
   </div>
 </footer>
+```
 
+(En `base.html` usamos `{{ now }}` si agregas `django.template.context_processors.request`/`django.template.context_processors.tz` — si no, puedes usar `{{ "" }}`; alternativa simple: poner la fecha manual.)
 
-(En base.html usamos {{ now }} si agregas django.template.context_processors.request/django.template.context_processors.tz — si no, puedes usar {{ "" }}; alternativa simple: poner la fecha manual.)
+`header.html` es opcional; puedes incluir metadatos o banner.
 
-header.html es opcional; puedes incluir metadatos o banner.
+# 18 — `navbar.html` ya incluye las opciones que solicitaste
 
-18 — navbar.html ya incluye las opciones que solicitaste
+* Opciones principales con iconos (emoji) y submenús sin iconos (tal como pediste).
+* Ajusta enlaces donde faltan (los `#`) cuando implementes Producción/Eventos.
 
-Opciones principales con iconos (emoji) y submenús sin iconos (tal como pediste).
+# 19 — footer: derechos de autor, fecha del sistema y “Creado por Maximiliano Lira, Cbtis 128” y fija al final
 
-Ajusta enlaces donde faltan (los #) cuando implementes Producción/Eventos.
+(ya incluido en `footer.html` con clase `.footer-fixed`).
 
-19 — footer: derechos de autor, fecha del sistema y “Creado por Maximiliano Lira, Cbtis 128” y fija al final
+# 20 — `inicio.html` (imagen desde la red)
 
-(ya incluido en footer.html con clase .footer-fixed).
+`app_Granja_Vacas/templates/inicio.html`:
 
-20 — inicio.html (imagen desde la red)
-
-app_Granja_Vacas/templates/inicio.html:
-
+```html
 {% extends 'base.html' %}
 {% block title %}Inicio - Granja Vacas{% endblock %}
 {% block content %}
@@ -339,27 +370,29 @@ app_Granja_Vacas/templates/inicio.html:
   <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b" alt="granja" class="img-fluid rounded">
 </div>
 {% endblock %}
-
+```
 
 (Esa URL es de ejemplo; cámbiala si quieres otra.)
 
-21 — Crear subcarpeta categoria dentro de app_Granja_Vacas/templates
+# 21 — Crear subcarpeta `categoria` dentro de `app_Granja_Vacas/templates`
 
-Tu instrucción 21 pide crear carpeta categoria. Hazlo:
+Tu instrucción 21 pide crear carpeta `categoria`. Hazlo:
 
+```
 app_Granja_Vacas/templates/categoria/
-
+```
 
 (Si más adelante quieres archivos ahí, agrégalos.)
 
-22 — Crear archivos HTML de categorías dentro de app_Granja_Vacas/templates/Vacas
+# 22 — Crear archivos HTML de categorías dentro de `app_Granja_Vacas/templates/Vacas`
 
-Crea Vacas/agregar_vaca.html, Vacas/ver_vacas.html, Vacas/actualizar_vaca.html, Vacas/borrar_vaca.html.
+Crea `Vacas/agregar_vaca.html`, `Vacas/ver_vacas.html`, `Vacas/actualizar_vaca.html`, `Vacas/borrar_vaca.html`.
 
 Ejemplos básicos:
 
-Vacas/agregar_vaca.html
+`Vacas/agregar_vaca.html`
 
+```html
 {% extends 'base.html' %}
 {% block content %}
 <h2>Agregar Vaca</h2>
@@ -379,10 +412,11 @@ Vacas/agregar_vaca.html
   <button class="btn btn-primary">Guardar</button>
 </form>
 {% endblock %}
+```
 
+`Vacas/ver_vacas.html`
 
-Vacas/ver_vacas.html
-
+```html
 {% extends 'base.html' %}
 {% block content %}
 <h2>Listado de Vacas</h2>
@@ -409,10 +443,11 @@ Vacas/ver_vacas.html
   </tbody>
 </table>
 {% endblock %}
+```
 
+`Vacas/actualizar_vaca.html`
 
-Vacas/actualizar_vaca.html
-
+```html
 {% extends 'base.html' %}
 {% block content %}
 <h2>Actualizar Vaca</h2>
@@ -429,10 +464,11 @@ Vacas/actualizar_vaca.html
   <button class="btn btn-primary">Actualizar</button>
 </form>
 {% endblock %}
+```
 
+`Vacas/borrar_vaca.html`
 
-Vacas/borrar_vaca.html
-
+```html
 {% extends 'base.html' %}
 {% block content %}
 <h2>Confirmar borrado</h2>
@@ -443,15 +479,17 @@ Vacas/borrar_vaca.html
   <a href="{% url 'ver_vacas' %}" class="btn btn-secondary">Cancelar</a>
 </form>
 {% endblock %}
+```
 
-23 — No usar forms.py
+# 23 — **No usar `forms.py`**
 
-Todo el HTML usa formularios HTML puros y request.POST en las views (cumple tu instrucción).
+Todo el HTML usa formularios HTML puros y `request.POST` en las views (cumple tu instrucción).
 
-24 — urls.py en la app (app_Granja_Vacas/urls.py)
+# 24 — `urls.py` en la app (`app_Granja_Vacas/urls.py`)
 
 Crea este archivo con las rutas:
 
+```python
 # app_Granja_Vacas/urls.py
 from django.urls import path
 from . import views
@@ -464,20 +502,24 @@ urlpatterns = [
     path('vacas/editar/<int:pk>/guardar/', views.realizar_actualizacion_vaca, name='realizar_actualizacion_vaca'),
     path('vacas/borrar/<int:pk>/', views.borrar_vaca, name='borrar_vaca'),
 ]
+```
 
-25 — Agregar app_Granja_Vacas en settings.py de backend_Granja_Vacas
+# 25 — Agregar `app_Granja_Vacas` en `settings.py` de `backend_Granja_Vacas`
 
-Edita backend_Granja_Vacas/settings.py → INSTALLED_APPS:
+Edita `backend_Granja_Vacas/settings.py` → `INSTALLED_APPS`:
 
+```python
 INSTALLED_APPS = [
     # apps por defecto...
     'app_Granja_Vacas',
 ]
+```
 
-26 — Configurar urls.py de backend_Granja_Vacas para enlazar la app
+# 26 — Configurar `urls.py` de `backend_Granja_Vacas` para enlazar la app
 
-Edita backend_Granja_Vacas/urls.py:
+Edita `backend_Granja_Vacas/urls.py`:
 
+```python
 from django.contrib import admin
 from django.urls import path, include
 
@@ -485,11 +527,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app_Granja_Vacas.urls')),  # rutas de la app (inicio, vacas, etc.)
 ]
+```
 
-27 — Registrar modelos en admin.py y volver a realizar migraciones
+# 27 — Registrar modelos en `admin.py` y volver a realizar migraciones
 
-app_Granja_Vacas/admin.py:
+`app_Granja_Vacas/admin.py`:
 
+```python
 from django.contrib import admin
 from .models import Vaca, Produccion, EventoSanitario
 
@@ -505,25 +549,28 @@ class ProduccionAdmin(admin.ModelAdmin):
 @admin.register(EventoSanitario)
 class EventoSanitarioAdmin(admin.ModelAdmin):
     list_display = ('tipo_evento','fecha_evento','veterinario','costo')
-
+```
 
 Luego:
 
+```bash
 python manage.py makemigrations
 python manage.py migrate
+```
 
-27 (adicional) — Por ahora solo trabajar con “Vacas”
+# 27 (adicional) — Por ahora solo trabajar con “Vacas”
 
-Aunque registraste los modelos, en la interfaz web te concentrarás en las vistas/plantillas de Vaca. Producción y EventoSanitario los dejamos para después, como pediste.
+Aunque registraste los modelos, en la interfaz web te concentrarás en las vistas/plantillas de `Vaca`. Producción y EventoSanitario los dejamos para después, como pediste.
 
-28 — Estilo: colores suaves y diseño sencillo
+# 28 — Estilo: colores suaves y diseño sencillo
 
-En base.html incluí estilos suaves y card-soft para modernizar. Puedes ajustar variables CSS al gusto.
+En `base.html` incluí estilos suaves y `card-soft` para modernizar. Puedes ajustar variables CSS al gusto.
 
-29 — Al inicio crear la estructura completa de carpetas y archivos
+# 29 — Al inicio crear la estructura completa de carpetas y archivos
 
-Resumen de estructura propuesta (crea con el explorador o mkdir):
+Resumen de estructura propuesta (crea con el explorador o `mkdir`):
 
+```
 UIII_Granja_Vacas_0627/
 ├─ .venv/
 ├─ manage.py
@@ -546,37 +593,42 @@ UIII_Granja_Vacas_0627/
 │        ├─ ver_vacas.html
 │        ├─ actualizar_vaca.html
 │        └─ borrar_vaca.html
+```
 
-30 — Proyecto totalmente funcional (mínimo requerido)
+# 30 — Proyecto totalmente funcional (mínimo requerido)
 
 Pasos resumidos para dejar todo funcional:
 
-Crear .venv, activarlo y seleccionar intérprete.
+1. Crear `.venv`, activarlo y seleccionar intérprete.
+2. `pip install django`
+3. `django-admin startproject backend_Granja_Vacas .`
+4. `python manage.py startapp app_Granja_Vacas`
+5. Pegar `models.py`.
+6. Añadir `app_Granja_Vacas` en `INSTALLED_APPS`.
+7. Crear `app_Granja_Vacas/urls.py` y `views.py` con el código dado.
+8. Crear templates (base, navbar, vacas/...).
+9. `python manage.py makemigrations` → `python manage.py migrate`.
+10. `python manage.py createsuperuser` (si quieres acceder a admin).
+11. `python manage.py runserver 8023`
+12. Abrir `http://127.0.0.1:8023/`
 
-pip install django
-
-django-admin startproject backend_Granja_Vacas .
-
-python manage.py startapp app_Granja_Vacas
-
-Pegar models.py.
-
-Añadir app_Granja_Vacas en INSTALLED_APPS.
-
-Crear app_Granja_Vacas/urls.py y views.py con el código dado.
-
-Crear templates (base, navbar, vacas/...).
-
-python manage.py makemigrations → python manage.py migrate.
-
-python manage.py createsuperuser (si quieres acceder a admin).
-
-python manage.py runserver 8023
-
-Abrir http://127.0.0.1:8023/
-
-31 — Finalmente ejecutar servidor en el puerto 8023
+# 31 — Finalmente ejecutar servidor en el puerto 8023
 
 (ya descrito):
 
+```bash
 python manage.py runserver 8023
+```
+
+---
+
+## Consejos prácticos / comprobaciones
+
+* Si `templates` no se detecta: Django busca plantillas en `APP/templates/` automáticamente si `APP` está en INSTALLED_APPS. Si prefieres carpeta global de plantillas, añade en `settings.py` `TEMPLATES[0]['DIRS'] = [BASE_DIR / 'templates']`.
+* Para el footer con fecha dinámica: puedes usar `django.template.context_processors.request` o pasar la fecha en el contexto desde tus views (por simplicidad, el footer usa `{{ now|date:"Y" }}` si agregas `django.template.context_processors.tz`).
+* Si usas Windows PowerShell y falla `Activate.ps1`, puedes abrir un terminal cmd o ajustar políticas como indiqué.
+* Para imágenes desde la red en `inicio.html` asegúrate de que la URL sea accesible o descarga la imagen y sirve como archivo estático.
+
+---
+
+Si quieres, en el siguiente paso **te creo los archivos exactos listos para pegar** (te los devuelvo aquí con el contenido ordenado por ruta) — dime si los quieres *todos* (views, urls, settings cambios, templates completos). También puedo generar un `.zip` si prefieres (te mostraré cómo guardarlo localmente). ¿Cómo quieres que siga?
